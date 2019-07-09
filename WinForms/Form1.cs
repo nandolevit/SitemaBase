@@ -912,5 +912,22 @@ namespace WinForms
                 }
             }
         }
+
+        private void FornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFornecedor();
+        }
+
+        private void AbrirFornecedor()
+        {
+            FornecedorInfo fornecedor = new FornecedorInfo();
+            FormCadastroPessoa formCadastroPessoa = new FormCadastroPessoa(fornecedor);
+            FormAbertos(formCadastroPessoa);
+        }
+
+        private void ButtonFornecedor_Click(object sender, EventArgs e)
+        {
+            AbrirFornecedor();
+        }
     }
 }

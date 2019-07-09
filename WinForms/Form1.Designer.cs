@@ -139,8 +139,9 @@
             this.toolTipInforme = new System.Windows.Forms.ToolTip(this.components);
             this.panelOnline = new System.Windows.Forms.Panel();
             this.panelCentral = new System.Windows.Forms.Panel();
+            this.buttonFornecedor = new System.Windows.Forms.Button();
+            this.fornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripPrincipal.SuspendLayout();
-            this.statusStripBarra.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panelPrincipal.SuspendLayout();
             this.SuspendLayout();
@@ -168,6 +169,7 @@
             // 
             this.cadastrarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clienteToolStripMenuItem,
+            this.fornecedorToolStripMenuItem,
             this.funcionarioToolStripMenuItem,
             this.produtoToolStripMenuItem,
             this.unidadeToolStripMenuItem});
@@ -178,28 +180,28 @@
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clienteToolStripMenuItem.Text = "Cliente";
             this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
             // 
             // funcionarioToolStripMenuItem
             // 
             this.funcionarioToolStripMenuItem.Name = "funcionarioToolStripMenuItem";
-            this.funcionarioToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.funcionarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.funcionarioToolStripMenuItem.Text = "Funcionário";
             this.funcionarioToolStripMenuItem.Click += new System.EventHandler(this.MenuItemFuncionario_Click);
             // 
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.produtoToolStripMenuItem.Text = "Produto";
             this.produtoToolStripMenuItem.Click += new System.EventHandler(this.MenuItemProduto_Click);
             // 
             // unidadeToolStripMenuItem
             // 
             this.unidadeToolStripMenuItem.Name = "unidadeToolStripMenuItem";
-            this.unidadeToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.unidadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.unidadeToolStripMenuItem.Text = "Unidade";
             this.unidadeToolStripMenuItem.Visible = false;
             this.unidadeToolStripMenuItem.Click += new System.EventHandler(this.MenuItemUnidade_Click);
@@ -564,6 +566,11 @@
             this.MenuItemLancarEstoque.Visible = false;
             this.MenuItemLancarEstoque.Click += new System.EventHandler(this.MenuItemLancarEstoque_Click_1);
             // 
+            // MenuItemPedido
+            // 
+            this.MenuItemPedido.Name = "MenuItemPedido";
+            this.MenuItemPedido.Size = new System.Drawing.Size(177, 22);
+            // 
             // caixaToolStripMenuItem
             // 
             this.caixaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -816,6 +823,7 @@
             // panelPrincipal
             // 
             this.panelPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelPrincipal.Controls.Add(this.buttonFornecedor);
             this.panelPrincipal.Controls.Add(this.label7);
             this.panelPrincipal.Controls.Add(this.label6);
             this.panelPrincipal.Controls.Add(this.label5);
@@ -1153,6 +1161,27 @@
             this.panelCentral.Size = new System.Drawing.Size(793, 583);
             this.panelCentral.TabIndex = 5;
             // 
+            // buttonFornecedor
+            // 
+            this.buttonFornecedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonFornecedor.FlatAppearance.BorderSize = 0;
+            this.buttonFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFornecedor.Image = global::WinForms.Properties.Resources.icons8_Small_Business_32;
+            this.buttonFornecedor.Location = new System.Drawing.Point(88, 3);
+            this.buttonFornecedor.Name = "buttonFornecedor";
+            this.buttonFornecedor.Size = new System.Drawing.Size(35, 27);
+            this.buttonFornecedor.TabIndex = 20;
+            this.toolTipInforme.SetToolTip(this.buttonFornecedor, "Cadastrar Produtos");
+            this.buttonFornecedor.UseVisualStyleBackColor = true;
+            this.buttonFornecedor.Click += new System.EventHandler(this.ButtonFornecedor_Click);
+            // 
+            // fornecedorToolStripMenuItem
+            // 
+            this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
+            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fornecedorToolStripMenuItem.Text = "Fornecedor";
+            this.fornecedorToolStripMenuItem.Click += new System.EventHandler(this.FornecedorToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1178,8 +1207,6 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.menuStripPrincipal.ResumeLayout(false);
             this.menuStripPrincipal.PerformLayout();
-            this.statusStripBarra.ResumeLayout(false);
-            this.statusStripBarra.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.panelPrincipal.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1298,6 +1325,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelPc;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelIP;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelPcNome;
+        private System.Windows.Forms.ToolStripMenuItem fornecedorToolStripMenuItem;
+        private System.Windows.Forms.Button buttonFornecedor;
     }
 }
 
