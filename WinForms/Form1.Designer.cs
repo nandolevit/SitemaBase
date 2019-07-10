@@ -33,6 +33,7 @@
             this.menuStripPrincipal = new System.Windows.Forms.MenuStrip();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -111,12 +112,12 @@
             this.toolStripStatusLabelUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.LabelRadapePrazo = new System.Windows.Forms.ToolStripStatusLabel();
-            this.notifyIconBandeja = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerPrincipal = new System.Windows.Forms.Timer(this.components);
             this.panelPrincipal = new System.Windows.Forms.Panel();
+            this.buttonFornecedor = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -139,8 +140,6 @@
             this.toolTipInforme = new System.Windows.Forms.ToolTip(this.components);
             this.panelOnline = new System.Windows.Forms.Panel();
             this.panelCentral = new System.Windows.Forms.Panel();
-            this.buttonFornecedor = new System.Windows.Forms.Button();
-            this.fornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripPrincipal.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panelPrincipal.SuspendLayout();
@@ -180,28 +179,35 @@
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.clienteToolStripMenuItem.Text = "Cliente";
             this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
+            // 
+            // fornecedorToolStripMenuItem
+            // 
+            this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
+            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.fornecedorToolStripMenuItem.Text = "Fornecedor";
+            this.fornecedorToolStripMenuItem.Click += new System.EventHandler(this.FornecedorToolStripMenuItem_Click);
             // 
             // funcionarioToolStripMenuItem
             // 
             this.funcionarioToolStripMenuItem.Name = "funcionarioToolStripMenuItem";
-            this.funcionarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.funcionarioToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.funcionarioToolStripMenuItem.Text = "Funcionário";
             this.funcionarioToolStripMenuItem.Click += new System.EventHandler(this.MenuItemFuncionario_Click);
             // 
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.produtoToolStripMenuItem.Text = "Produto";
             this.produtoToolStripMenuItem.Click += new System.EventHandler(this.MenuItemProduto_Click);
             // 
             // unidadeToolStripMenuItem
             // 
             this.unidadeToolStripMenuItem.Name = "unidadeToolStripMenuItem";
-            this.unidadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.unidadeToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.unidadeToolStripMenuItem.Text = "Unidade";
             this.unidadeToolStripMenuItem.Visible = false;
             this.unidadeToolStripMenuItem.Click += new System.EventHandler(this.MenuItemUnidade_Click);
@@ -720,6 +726,14 @@
             // 
             // statusStripBarra
             // 
+            this.statusStripBarra.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelPc,
+            this.toolStripStatusLabelPcNome,
+            this.toolStripStatusLabelRede,
+            this.toolStripStatusLabelIP,
+            this.toolStripStatusLabelLocal,
+            this.toolStripStatusLabelUsuario,
+            this.toolStripStatusLabelTime});
             this.statusStripBarra.Location = new System.Drawing.Point(0, 707);
             this.statusStripBarra.Name = "statusStripBarra";
             this.statusStripBarra.Size = new System.Drawing.Size(1008, 22);
@@ -785,15 +799,6 @@
             this.LabelRadapePrazo.Size = new System.Drawing.Size(38, 17);
             this.LabelRadapePrazo.Text = "Ativo:";
             // 
-            // notifyIconBandeja
-            // 
-            this.notifyIconBandeja.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notifyIconBandeja.BalloonTipTitle = "LevitSoft";
-            this.notifyIconBandeja.ContextMenuStrip = this.contextMenuStrip1;
-            this.notifyIconBandeja.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconBandeja.Icon")));
-            this.notifyIconBandeja.Text = "LevitSoft";
-            this.notifyIconBandeja.Visible = true;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -849,6 +854,20 @@
             this.panelPrincipal.Name = "panelPrincipal";
             this.panelPrincipal.Size = new System.Drawing.Size(1008, 100);
             this.panelPrincipal.TabIndex = 1;
+            // 
+            // buttonFornecedor
+            // 
+            this.buttonFornecedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonFornecedor.FlatAppearance.BorderSize = 0;
+            this.buttonFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFornecedor.Image = global::WinForms.Properties.Resources.icons8_Small_Business_32;
+            this.buttonFornecedor.Location = new System.Drawing.Point(88, 3);
+            this.buttonFornecedor.Name = "buttonFornecedor";
+            this.buttonFornecedor.Size = new System.Drawing.Size(35, 27);
+            this.buttonFornecedor.TabIndex = 20;
+            this.toolTipInforme.SetToolTip(this.buttonFornecedor, "Cadastrar Fornecedor");
+            this.buttonFornecedor.UseVisualStyleBackColor = true;
+            this.buttonFornecedor.Click += new System.EventHandler(this.ButtonFornecedor_Click);
             // 
             // label7
             // 
@@ -1161,27 +1180,6 @@
             this.panelCentral.Size = new System.Drawing.Size(793, 583);
             this.panelCentral.TabIndex = 5;
             // 
-            // buttonFornecedor
-            // 
-            this.buttonFornecedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonFornecedor.FlatAppearance.BorderSize = 0;
-            this.buttonFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFornecedor.Image = global::WinForms.Properties.Resources.icons8_Small_Business_32;
-            this.buttonFornecedor.Location = new System.Drawing.Point(88, 3);
-            this.buttonFornecedor.Name = "buttonFornecedor";
-            this.buttonFornecedor.Size = new System.Drawing.Size(35, 27);
-            this.buttonFornecedor.TabIndex = 20;
-            this.toolTipInforme.SetToolTip(this.buttonFornecedor, "Cadastrar Fornecedor");
-            this.buttonFornecedor.UseVisualStyleBackColor = true;
-            this.buttonFornecedor.Click += new System.EventHandler(this.ButtonFornecedor_Click);
-            // 
-            // fornecedorToolStripMenuItem
-            // 
-            this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
-            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.fornecedorToolStripMenuItem.Text = "Fornecedor";
-            this.fornecedorToolStripMenuItem.Click += new System.EventHandler(this.FornecedorToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1236,7 +1234,6 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItemProduto;
         private System.Windows.Forms.ToolStripMenuItem MenuItemEstoque;
         private System.Windows.Forms.ToolStripMenuItem MenuItemContagemEstoque;
-        private System.Windows.Forms.NotifyIcon notifyIconBandeja;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem;

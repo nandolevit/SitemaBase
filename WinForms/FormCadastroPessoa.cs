@@ -402,7 +402,8 @@ namespace WinForms
         {
             thread = new Thread(Salvar);
             form1.ExecutarThread(thread);
-            this.Activate();
+
+            this.Close();
             
         }
 
@@ -447,8 +448,8 @@ namespace WinForms
 
             Form1.encerrarThread = true;
 
-            //if (idSave > 0)
-            //    FormMessage.ShowMessegeInfo("Registro salvo com sucesso!");
+            if (idSave > 0)
+                FormMessage.ShowMessegeInfo("Registro salvo com sucesso!");
         }
 
         private void Alterar()

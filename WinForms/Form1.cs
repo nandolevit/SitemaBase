@@ -26,16 +26,18 @@ namespace WinForms
         public string ConexaoOffline { get { return "server=LOCALHOST;user id=nandolevit;password=@wizykovisc87;SslMode=none;database=levittech"; } }
         public static bool ConectedSystem { get; set; }
         public static bool FecharFormCarregando { get; set; }
+
         public static EmpresaInfo Empresa { get; set; }
         public static UnidadeInfo Unidade { get; set; }
         public static UserInfo User { get; set; }
         public static ComputerInfo Server { get; set; }
         public static ComputerInfo Computer { get; set; }
+        public static UserLoginInfo Login { get; set; } //registra a hora do login e a saída do usuário
+
         public static string Caminho { get { return @"C:\Users\Public\LevitSoft\emp.lvt"; } }
         public static string FileNameEmp { get { return "emp.lvt"; } }
         public static string FileNameUnid { get { return "unid.lvt"; } }
         public static string FileNameComp { get { return "comp.lvt"; } }
-        public static UserLoginInfo Login { get; set; } //registra a hora do login e a saída do usuário
         public static bool encerrarThread;
 
         UserNegocio userNegocio;

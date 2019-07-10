@@ -124,10 +124,10 @@ namespace WinForms
 
         private void buttonSair_Click(object sender, EventArgs e)
         {
-            if (Ativo)
-                Close();
-            else
+            if (this.Modal)
                 Application.Exit();
+            else
+                Close();
         }
 
         private void PreencherComputador()
@@ -233,7 +233,6 @@ namespace WinForms
         private void ButtonUnid_Click(object sender, EventArgs e)
         {
             Inserir();
-
         }
 
         private void InserirUnid()
@@ -250,9 +249,14 @@ namespace WinForms
 
         private void FormEmpresa_Load(object sender, EventArgs e)
         {
+            if (this.Modal)
+            {
+                if (Directory.Exists(diretorio))
+                    Directory.Delete(diretorio, true);
+            }
+            else
+                buttonUnid.Enabled = false;
 
-            if (Directory.Exists(diretorio))
-                Directory.Delete(diretorio, true);
         }
     }
 }
