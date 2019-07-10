@@ -114,7 +114,7 @@ namespace WinForms
                 formProdutosConsultar.ShowDialog(this);
 
                 if (formProdutosConsultar.DialogResult == DialogResult.Yes)
-                    BuscarProdutos(formProdutosConsultar.Produtos.proId.ToString());
+                    BuscarProdutos(formProdutosConsultar.SelecionadoProduto.proId.ToString());
 
                 formProdutosConsultar.Dispose();
             }

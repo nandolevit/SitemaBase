@@ -126,7 +126,6 @@ namespace WinForms
                 valor = Convert.ToDecimal(textBoxValor.Text);
                 thread = new Thread(Salvar);
                 form1.ExecutarThread(thread);
-                this.Activate();
                 Fechar();
             }
         }
@@ -140,9 +139,6 @@ namespace WinForms
             else
                 entradaSaida = "[PAGAMENTOS DIVERSOS] " + Environment.NewLine;
 
-
-            //CaixaNegocios caixaNegocios = new CaixaNegocios(Form1.Empresa.empconexao);
-            //CaixaAbrirInfo caixaAbrirInfo = caixaNegocios.ConsultarCaixaAberto(Form1.Unidade.uniid);
 
             EntradaSaidaInfo entradaSaidaSalvar = new EntradaSaidaInfo
             {
@@ -162,7 +158,7 @@ namespace WinForms
                 entravalor = valor,
                 entravalorpago = valor,
                 entraidtipoentrada = 1,
-                entraparcelado = Diversos
+                entraparcelado = false
             };
 
             if (!alterar)
@@ -220,10 +216,10 @@ namespace WinForms
         
         private void Fechar()
         {
-            if (Diversos)
-                this.Close();
-            else
+            if (this.Modal)
                 this.DialogResult = DialogResult.Yes;
+            else
+                this.Close();
         }
 
         private bool CamposObrigatorio()

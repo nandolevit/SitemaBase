@@ -354,7 +354,7 @@ namespace Negocios
             {
                 GridFormProdutoEstoqueInfo estoque = new GridFormProdutoEstoqueInfo
                 {
-                    autnome = Convert.ToString(row["autnome"]),
+                    autnome = Convert.ToString(row["marcadescricao"]),
                     fornome = Convert.ToString(row["fornome"]),
                     procodbarras = Convert.ToString(row["procodbarras"]),
                     prodcatnome = Convert.ToString(row["prodcatnome"]),
@@ -486,11 +486,11 @@ namespace Negocios
                     Desativado = Convert.ToInt32(row["proidstatus"]) == 1 ? "ATIVADO" : "DESATIVADO",
                     proidstatus = Convert.ToInt32(row["proidstatus"]),
                     proidsubcategoria = Convert.ToInt32(row["proidsubcategoria"]),
-                    proidmarca = Convert.ToInt32(row["autid"]),
+                    proidmarca = Convert.ToInt32(row["marcaid"]),
                     proidfornecedor = Convert.ToInt32(row["proidfornecedor"]),
                     proDataCad = Convert.ToDateTime(row["proDataCad"]),
                     procodkit = Convert.ToString(row["procodkit"]),
-                    prodetalhes = Convert.ToString(row["proDescricao"]) + "/" + Convert.ToString(row["autnome"]) + " (" + Convert.ToString(row["prodcatnome"]) + "/" + Convert.ToString(row["prodsubcatnome"]) + ")",
+                    prodetalhes = Convert.ToString(row["proDescricao"]) + "/" + Convert.ToString(row["marcadescricao"]) + " (" + Convert.ToString(row["prodcatnome"]) + "/" + Convert.ToString(row["prodsubcatnome"]) + ")",
                     prodestoquedatacad = Convert.ToDateTime(row["prodestoquedatacad"]),
                     prodestoqueidproduto = Convert.ToInt32(row["prodestoqueidproduto"]),
                     prodestoqueidunidade = Convert.ToInt32(row["prodestoqueidunidade"]),

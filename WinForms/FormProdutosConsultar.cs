@@ -19,7 +19,7 @@ namespace WinForms
         ProdutoColecao produtosColecao;
 
         public int CodProd { get; set; }
-        public ProdutoInfo Produtos { get; set; }
+        public ProdutoInfo SelecionadoProduto { get; set; }
 
         public FormProdutosConsultar()
         {
@@ -121,6 +121,41 @@ namespace WinForms
         private void FormProdutosConsultar_Load(object sender, EventArgs e)
         {
             this.Activate();
+        }
+
+        private void DataGridViewProd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ItemSelecionado();
+        }
+
+        private void ItemSelecionado()
+        {
+            if (dataGridViewProd.SelectedRows.Count > 0)
+                SelecionadoProduto = dataGridViewProd.SelectedRows[0].DataBoundItem as ProdutoInfo;
+
+            if (this.Modal)
+                this.DialogResult = DialogResult.Yes;
+            else
+            {
+                FormProdutos produto = new FormProdutos(SelecionadoProduto.proId);
+                produto.ShowDialog(this);
+                produto.Dispose();
+            }
+        }
+
+        private void FormProdutosConsultar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (this.ActiveControl.Equals(dataGridViewProd))
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.Enter:
+                        ItemSelecionado();
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

@@ -478,7 +478,6 @@
             this.buttonBuscarStatus.Size = new System.Drawing.Size(20, 20);
             this.buttonBuscarStatus.TabIndex = 21;
             this.buttonBuscarStatus.UseVisualStyleBackColor = true;
-            this.buttonBuscarStatus.Click += new System.EventHandler(this.buttonBuscarStatus_Click);
             // 
             // buttonAddFornecedor
             // 

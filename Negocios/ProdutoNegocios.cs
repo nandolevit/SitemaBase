@@ -33,6 +33,30 @@ namespace Negocios
                 return 0;
         }
 
+        public CodDescricaoInfo ConsultarProdutoMarcaId(int id)
+        {
+            if (accessDbMySql.Conectar(EmpConexao))
+            {
+                accessDbMySql.AddParametrosMySql("@id", id);
+                DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarProdMarcaId");
+                if (dataTable != null)
+                {
+                    CodDescricaoInfo cod = new CodDescricaoInfo
+                    {
+                        cod = Convert.ToInt32(dataTable.Rows[0]["marcaid"]),
+                        descricao = Convert.ToString(dataTable.Rows[0]["marcadescricao"])
+                    };
+
+                    return cod;
+                }
+                else
+                    return null;
+            }
+            else
+                return null;
+
+        }
+
         public CodDescricaoColecao ConsultarProdutoMarca()
         {
             if (accessDbMySql.Conectar(EmpConexao))
@@ -389,8 +413,7 @@ namespace Negocios
                     proidfornecedor = Convert.ToInt32(row["proidfornecedor"]),
                     proDataCad = Convert.ToDateTime(row["proDataCad"]),
                     procodkit = Convert.ToString(row["procodkit"]),
-                    prodetalhes = Convert.ToString(row["proDescricao"]) + "/" + Convert.ToString(row["autnome"]) + " (" + Convert.ToString(row["prodcatnome"]) + "/" + Convert.ToString(row["prodsubcatnome"]) + ")",
-                    protaxa = Convert.ToBoolean(row["protaxa"]),
+                    prodetalhes = Convert.ToString(row["proDescricao"]) + "/" + Convert.ToString(row["marcadescricao"]) + " (" + Convert.ToString(row["prodcatnome"]) + "/" + Convert.ToString(row["prodsubcatnome"]) + ")"
                 };
 
                 colecao.Add(produtosInfo);

@@ -61,8 +61,6 @@
   <ItemGroup>
     <Compile Include="EntradaDiversosColecao.cs" />
     <Compile Include="EntradaDiversosInfo.cs" />
-    <Compile Include="MarcaColecao.cs" />
-    <Compile Include="MarcaInfo.cs" />
     <Compile Include="CaixaAbrirColecao.cs" />
     <Compile Include="CaixaAbrirInfo.cs" />
     <Compile Include="CaixaDiaColecao.cs" />

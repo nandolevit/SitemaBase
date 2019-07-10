@@ -304,7 +304,7 @@ namespace WinForms
                     Id = produtoInfo.proId,
                     ValorDesc = produtoInfo.proValorVarejo,
                     Barras = produtoInfo.proCodBarras,
-                    Descricao = produtoInfo.proDescricao,
+                    Descricao = string.Format("{0:00000}", produtoInfo.proId) + " - " +  produtoInfo.proDescricao,
                     Quant = dbQuant,
                     Total = dbTotal,
                     ValorUnit = produtoInfo.proValorVarejo,
@@ -752,7 +752,7 @@ namespace WinForms
 
             if (formProdutosConsultar.DialogResult == DialogResult.Yes)
             {
-                produtoInfo = formProdutosConsultar.Produtos;
+                produtoInfo = formProdutosConsultar.SelecionadoProduto;
                 PreencherFormProduto();
             }
 

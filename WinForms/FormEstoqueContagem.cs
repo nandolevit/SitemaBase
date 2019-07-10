@@ -133,7 +133,7 @@ namespace WinForms
 
             if (formProdutosConsultar.DialogResult == DialogResult.Yes)
             {
-                produtoInfo = formProdutosConsultar.Produtos;
+                produtoInfo = formProdutosConsultar.SelecionadoProduto;
                 PreencherProdForm(produtoInfo);
             }
 

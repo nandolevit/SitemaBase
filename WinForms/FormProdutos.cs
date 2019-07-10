@@ -18,9 +18,12 @@ namespace WinForms
     {
         ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao);
         EstoqueNegocios estoque = new EstoqueNegocios(Form1.Empresa.empconexao);
-        public ProdutoInfo produtosInfo;
+        //public ProdutoInfo produtosInfo;
         FornecedorNegocios fornecedorNegocios = new FornecedorNegocios(Form1.Empresa.empconexao);
-        FornecedorInfo fornecedorInfo = new FornecedorInfo();
+        FornecedorInfo fornecedorInfo;
+        ProdutoInfo infoProd;
+
+        private int ProdCod { get; set; }
 
         //bool addEstoque = false;
         bool alterar = false;
@@ -55,7 +58,8 @@ namespace WinForms
         public FormProdutos(int cod)
         {
             FormProdutosInicializar();
-            ConsultarProduto(cod);
+            ProdCod = cod;
+            ConsultarProduto();
             alterar = true;
             buttonBuscarStatus.Enabled = true;
         }
@@ -84,8 +88,6 @@ namespace WinForms
             this.textBoxCompra.LostFocus += new System.EventHandler(this.textBoxValor_LostFocus);
             this.textBoxVarejo.LostFocus += new System.EventHandler(this.textBoxValor_LostFocus);
             this.textBoxAtacado.LostFocus += new System.EventHandler(this.textBoxValor_LostFocus);
-            this.textBoxCategoria.LostFocus += new System.EventHandler(this.textBoxCategoria_LostFocus);
-            this.textBoxSub.LostFocus += new System.EventHandler(this.textBoxSub_LostFocus);
             this.textBoxMarca.LostFocus += new System.EventHandler(this.textBoxMarca_LostFocus);
             this.textBoxCodFornecedor.LostFocus += new System.EventHandler(this.textBoxCodFornecedor_LostFocus);
 
@@ -183,8 +185,8 @@ namespace WinForms
                     id = 0;
                 else
                     id = Convert.ToInt32(textBoxCod.Text);
-                
-                produtosInfo = new ProdutoInfo
+
+                infoProd = new ProdutoInfo
                 {
                     proId = id,
                     proCodBarras = textBoxBarras.Text,
@@ -205,7 +207,7 @@ namespace WinForms
                 //opção para salvar ou alterar o produto
                 if (!alterar)
                 {//salvar o produto
-                    int cod = produtoNegocios.InsertProduto(produtosInfo);
+                    int cod = produtoNegocios.InsertProduto(infoProd);
 
                     if (radioButtonSim.Checked)
                         produtoNegocios.InsertProdutoEstoque(cod, Form1.Unidade.uniid);
@@ -219,9 +221,9 @@ namespace WinForms
                             novoBarras += string.Format("{0:00}", categoria).Substring(0, 2);
                             novoBarras += string.Format("{0:000000}", cod);
                             textBoxBarras.Text = novoBarras;
-                            produtosInfo.proId = cod;
-                            produtosInfo.proCodBarras = novoBarras;
-                            produtoNegocios.UpdateProduto(produtosInfo);
+                            infoProd.proId = cod;
+                            infoProd.proCodBarras = novoBarras;
+                            produtoNegocios.UpdateProduto(infoProd);
                         }
 
                         if (pedido)
@@ -244,7 +246,7 @@ namespace WinForms
                 {//alterar o produto
                     if (FormMessage.ShowMessegeQuestion("Deseja salvar as alterações?") == DialogResult.Yes)
                     {
-                        if (produtoNegocios.UpdateProduto(produtosInfo))
+                        if (produtoNegocios.UpdateProduto(infoProd))
                         {
                             FormMessage.ShowMessegeInfo("Informações alterado com sucesso.");
                             this.DialogResult = DialogResult.Yes;
@@ -294,7 +296,6 @@ namespace WinForms
 
         private void BuscarporCod()
         {
-            LostFocus_Categoria();
             LostFocus_Fornecedor();
             LostFocus_Subcategoria();
             LostFocus_Marca();
@@ -363,18 +364,18 @@ namespace WinForms
             {
                 if (int.TryParse(textBoxCod.Text, out int cod))
                 {
-                    ConsultarProduto(cod);
+                    ProdCod = cod;
+                    ConsultarProduto();
                 }
                 else
                     FormMessage.ShowMessegeInfo("Insira um código válido!");
             }
         }
 
-        private void ConsultarProduto(int cod)
+        private void ConsultarProduto()
         {
-            ProdutoInfo produtosInfo = new ProdutoInfo();
-            produtosInfo = produtoNegocios.ConsultarProdutosId(cod);
-            PreencherForm(produtosInfo, true);
+            infoProd = produtoNegocios.ConsultarProdutosId(ProdCod);
+            PreencherForm(infoProd, true);
         }
 
         private void CamposObrigatorioRed()
@@ -431,11 +432,6 @@ namespace WinForms
             return true;
         }
 
-        private void pictureBoxBuscarCat_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void BusarCategoria()
         {
             CodDescricaoColecao prodCategoriaColecao = new CodDescricaoColecao();
@@ -470,11 +466,6 @@ namespace WinForms
             }
 
             formConsultar_Cod_Descricao.Dispose();
-        }
-
-        private void pictureBoxBuscarSub_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void BuscarSubcategoria()
@@ -541,11 +532,6 @@ namespace WinForms
             formConsultar_Cod_Descricao.Dispose();
         }
 
-        private void pictureBoxBuscarFornecedor_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void BuscarFornecedor()
         {
             FornecedorColecao fornecedorColecao = fornecedorNegocios.ConsultarForncedor();
@@ -575,30 +561,25 @@ namespace WinForms
             }
         }
 
-        private void pictureBoxBuscarStatus_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void LostFocus_Marca()
         {
             if (!string.IsNullOrEmpty(textBoxMarca.Text))
             {
                 if (int.TryParse(textBoxMarca.Text, out int cod))
                 {
-                    //MarcaInfo autorizadaInfo = autorizadaNegocios.ConsultarAutorizadaId(cod);
+                    CodDescricaoInfo marca = produtoNegocios.ConsultarProdutoMarcaId(cod);
 
-                    //if (autorizadaInfo != null)
-                    //{
-                    //    textBoxMarca.Text = string.Format("{0:000}", autorizadaInfo.autid);
-                    //    labelValorMarca.Text = autorizadaInfo.autnome;
-                    //}
-                    //else
-                    //{
-                    //    FormMessage.ShowMessegeWarning("Não foi encontrado, digite outro código!");
-                    //    textBoxMarca.Select();
-                    //    textBoxMarca.Clear();
-                    //}
+                    if (marca != null)
+                    {
+                        textBoxMarca.Text = string.Format("{0:000}", marca.cod);
+                        labelValorMarca.Text = marca.descricao;
+                    }
+                    else
+                    {
+                        FormMessage.ShowMessegeWarning("Não foi encontrado, digite outro código!");
+                        textBoxMarca.Select();
+                        textBoxMarca.Clear();
+                    }
                 }
             }
         }
@@ -633,7 +614,7 @@ namespace WinForms
 
         private void textBoxCodFornecedor_LostFocus(object sender, EventArgs e)
         {
-            
+            LostFocus_Fornecedor();
         }
 
         private void LostFocus_Subcategoria()
@@ -663,25 +644,6 @@ namespace WinForms
             }
         }
 
-        private void textBoxSub_LostFocus(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void LostFocus_Categoria()
-        {
-
-        }
-
-        private void textBoxCategoria_LostFocus(object sender, EventArgs e)
-        {
-            LostFocus_Categoria();
-        }
-
-        private void pictureBoxFornecedor_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private Form_Consultar AbrirForm(Form_ConsultarColecao form_Consultar, string titulo)
         {
@@ -769,11 +731,6 @@ namespace WinForms
             FormCadastroPessoa formCadastroPessoa = new FormCadastroPessoa(fornecedorInfo);
             formCadastroPessoa.ShowDialog(this);
             formCadastroPessoa.Dispose();
-        }
-
-        private void buttonBuscarStatus_Click(object sender, EventArgs e)
-        {
-           
         }
 
         private void textBoxCompra_TextChanged(object sender, EventArgs e)

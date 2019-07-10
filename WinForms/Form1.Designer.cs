@@ -1171,7 +1171,7 @@
             this.buttonFornecedor.Name = "buttonFornecedor";
             this.buttonFornecedor.Size = new System.Drawing.Size(35, 27);
             this.buttonFornecedor.TabIndex = 20;
-            this.toolTipInforme.SetToolTip(this.buttonFornecedor, "Cadastrar Produtos");
+            this.toolTipInforme.SetToolTip(this.buttonFornecedor, "Cadastrar Fornecedor");
             this.buttonFornecedor.UseVisualStyleBackColor = true;
             this.buttonFornecedor.Click += new System.EventHandler(this.ButtonFornecedor_Click);
             // 

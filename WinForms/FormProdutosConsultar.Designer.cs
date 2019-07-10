@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewProd = new System.Windows.Forms.DataGridView();
             this.colCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,13 +66,14 @@
             this.dataGridViewProd.RowHeadersVisible = false;
             this.dataGridViewProd.Size = new System.Drawing.Size(1094, 410);
             this.dataGridViewProd.TabIndex = 0;
+            this.dataGridViewProd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewProd_CellDoubleClick);
             // 
             // colCod
             // 
             this.colCod.DataPropertyName = "proId";
-            dataGridViewCellStyle1.Format = "000000";
-            dataGridViewCellStyle1.NullValue = null;
-            this.colCod.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Format = "000000";
+            dataGridViewCellStyle4.NullValue = null;
+            this.colCod.DefaultCellStyle = dataGridViewCellStyle4;
             this.colCod.HeaderText = "Código:";
             this.colCod.Name = "colCod";
             this.colCod.Width = 50;
@@ -94,9 +95,9 @@
             // colPreco
             // 
             this.colPreco.DataPropertyName = "proValorVarejo";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.colPreco.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Format = "C2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.colPreco.DefaultCellStyle = dataGridViewCellStyle5;
             this.colPreco.HeaderText = "Preço:";
             this.colPreco.Name = "colPreco";
             this.colPreco.Width = 80;
@@ -104,9 +105,9 @@
             // colAtacado
             // 
             this.colAtacado.DataPropertyName = "proValorAtacado";
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.colAtacado.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Format = "C2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.colAtacado.DefaultCellStyle = dataGridViewCellStyle6;
             this.colAtacado.HeaderText = "Atacado:";
             this.colAtacado.Name = "colAtacado";
             this.colAtacado.Width = 80;
@@ -232,6 +233,7 @@
             this.Name = "FormProdutosConsultar";
             this.Text = "Consultar produtos";
             this.Load += new System.EventHandler(this.FormProdutosConsultar_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormProdutosConsultar_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProd)).EndInit();
             this.groupBoxTipo.ResumeLayout(false);
             this.groupBoxTipo.PerformLayout();

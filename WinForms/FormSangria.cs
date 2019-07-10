@@ -123,7 +123,6 @@ namespace WinForms
                     obs = textBoxObs.Text;
                     thread = new Thread(Salvar);
                     form1.ExecutarThread(thread);
-                    this.Activate();
                     this.Close();
                 }
             }
