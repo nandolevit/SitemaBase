@@ -252,8 +252,8 @@ namespace WinForms
             thread.Start();
 
 
-            FormCarregarPrincipal formCarregarPrincipal = new FormCarregarPrincipal();
-            formCarregarPrincipal.Show(this);
+            //FormCarregarPrincipal formCarregarPrincipal = new FormCarregarPrincipal();
+            //formCarregarPrincipal.Show(this);
 
             DateTime temp1 = DateTime.Now;
             DateTime temp2;
@@ -265,7 +265,7 @@ namespace WinForms
 
                 if (span.TotalSeconds > 90)
                 {
-                    Form1.FecharFormCarregando = true;
+                    //Form1.FecharFormCarregando = true;
                     FormMessage.ShowMessegeWarning("Falha, não foi passível concluir a tarefa, tente novamente!");
                     break;
                 }
@@ -277,8 +277,8 @@ namespace WinForms
                 }
             }
 
-            Form1.FecharFormCarregando = true;
-            formCarregarPrincipal.Close();
+            //Form1.FecharFormCarregando = true;
+            //formCarregarPrincipal.Close();
             thread.Abort();
             encerrarThread = false;
         }
